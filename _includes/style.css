@@ -1,0 +1,69 @@
+* { margin:0;padding:0;text-decoration:none;box-sizing:border-box;color:#000 }
+body { background:#fff;font-family:serif;font-size:16px;min-height:100vh;display:grid;grid-template-columns:max-content 1fr;grid-template-rows:auto 1fr auto;padding-bottom:30px }
+body > *, body main > *, main figure > div > *, main p, main q, main cite, main pre { margin-bottom:30px }
+body .right { float:right;margin-left:30px }
+body a.self, body a.parent { font-style:italic }
+main a:hover, main a:hover > *, nav a:hover, nav main a:hover > * { background-color:#000;color:#fff;text-decoration:none }
+table td, table th { vertical-align:top;padding:2.5px 5px;text-align:left }
+table td > pre, table th > pre { background:none;padding:0;margin:0 }
+table tr img { margin-bottom:0;display:block }
+hr { clear:both;border:0;margin:0 }
+pre { tab-size:2 }
+header { grid-column:1;grid-row:1;margin:50px 30px;margin-right:60px }
+header img { display:block }
+nav { grid-column:2;grid-row:1;padding:45px 30px;margin:0;min-width:0 }
+nav ul { padding:0;margin:0 45px 0 0;display:inline-block;vertical-align:top }
+nav ul li { list-style-type:none;white-space:pre }
+nav ul li a { padding:0 4px }
+nav ul li a.parent, nav ul li a.self { text-decoration:underline }
+main { grid-column:1 / -1;grid-row:2;margin-left:30px;max-width:624px;clear:both;position:relative }
+main a { text-decoration:underline }
+main a[target="_blank"] { text-decoration-style:dotted }
+main article { border-left:1px dotted #000;padding-left:25px;clear:both }
+main article h2 { display:none }
+main cite { display:block }
+main cite:before { content:"— " }
+main h1, main h2, main h3, main h4, main h5 { max-width:400px }
+main ul, main ol { margin:0 0 30px 30px }
+main ul ul { margin-bottom:0 }
+main ul li, main ol li { line-height:25px;padding:0 5px }
+main figure img, main center img { display:block;margin:0 }
+main figure figcaption { padding:15px 0 }
+main figure:first-child { max-width:100vw;margin-left:-30px;width:800px }
+main figure:first-child figcaption { padding-left:30px }
+main p { line-height:160% }
+main sup { line-height:12px }
+main ::selection { background-color:#72dec2;color:#000;text-decoration:none }
+main q { font-family:serif;font-size:18px;font-style:italic;display:block;max-width:400px }
+main img, main svg { max-width:100%;display:inline-block;margin:0 0 25px }
+main pre { overflow:auto;background:#efefef;padding:10px;font-size:80% }
+main pre code, main pre i { color:#888 }
+main code { white-space:pre }
+main hr { clear:both }
+main kbd { font-size:12px;display:inline-block;padding:0 5px;font-weight:bold;border-radius:4px;line-height:20px;border:2px solid #222 }
+main iframe { width:100%;border:0;display:block;overflow:hidden;margin-bottom:30px;border-radius:5px }
+footer { grid-column:1 / -1;grid-row:3;clear:both;margin:30px 30px 15px 30px;border-top:1px dotted black;min-height:60px;padding-top:30px;line-height:30px }
+footer p { margin:0; }
+footer a { margin-right:3px }
+footer a:hover { text-decoration:underline }
+footer img { height:27px }
+footer div.right img { margin-right:0 }
+
+.lo.en { display:none; }
+html:target .lo { display:none; }
+html:target .lo.en { display:inline-block; }
+
+@media (prefers-color-scheme:dark) {
+	* { color:#fff }
+	body { background:#000 }
+	main a:hover, main a:hover > *, nav a:hover, nav a:hover > * { background-color:#fff;color:#000;text-decoration:none }
+	input { color:#000 }
+	img[src*="svg"], img[src*="png"] { filter:invert(1) hue-rotate(180deg) }
+	main pre { background:#111 }
+	main table { border-style:solid }
+	main th, main td { border-style:dotted }
+	main article { border-left-color:white }
+	.nodark { filter:invert(0) hue-rotate(0deg) !important;background:transparent !important }
+	footer { border-top-color:white }
+	footer * { color:white }
+}
