@@ -1,5 +1,5 @@
 title: d00-jk
-baseurl: /d00-jk-вс
+baseurl: /d00-jk-bc
 permalink: /:path/:basename:output_ext
 markdown: kramdown
 exclude:
