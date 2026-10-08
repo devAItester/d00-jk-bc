@@ -1,0 +1,92 @@
+{% assign pages = site.pages %}
+{% assign current = page.path | remove: ".md" | remove: ".html" | remove: "/index" %}
+{% if current == "index" %}
+  {% assign current = "" %}
+{% endif %}
+
+{% assign current_parts = current | split: "/" %}
+{% assign current_parent_parts = current_parts | pop %}
+{% assign current_parent = current_parent_parts | join: "/" %}
+
+{% assign current_grandparent_parts = current_parent_parts | pop %}
+{% assign current_grandparent = current_grandparent_parts | join: "/" %}
+
+{% assign current_has_children = false %}
+{% for p in pages %}
+  {% if p.path != "404.html" and p.title and p.title != "" %}
+    {% assign node = p.path | remove: ".md" | remove: ".html" | remove: "/index" %}
+    {% if node == "index" %}
+      {% assign node = "" %}
+    {% endif %}
+    {% assign parts = node | split: "/" %}
+    {% assign parent_parts = parts | pop %}
+    {% assign parent = parent_parts | join: "/" %}
+    {% if current != "" and node != "" and parent == current %}
+      {% assign current_has_children = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign col_1_parent = "" %}
+{% assign col_2_parent = "" %}
+{% assign col_3_parent = "" %}
+
+{% if current != "" %}
+  {% if current_has_children %}
+    {% assign col_1_parent = current_grandparent %}
+    {% assign col_2_parent = current_parent %}
+    {% assign col_3_parent = current %}
+  {% else %}
+    {% assign current_greatgrandparent_parts = current_grandparent_parts | pop %}
+    {% assign current_greatgrandparent = current_greatgrandparent_parts | join: "/" %}
+    {% assign col_1_parent = current_greatgrandparent %}
+    {% assign col_2_parent = current_grandparent %}
+    {% assign col_3_parent = current_parent %}
+  {% endif %}
+{% endif %}
+
+{% assign has_col_1 = false %}
+{% assign has_col_2 = false %}
+{% assign has_col_3 = false %}
+
+{% for p in pages %}
+  {% if p.path != "404.html" and p.title and p.title != "" %}
+    {% assign node = p.path | remove: ".md" | remove: ".html" | remove: "/index" %}
+    {% if node == "index" %}
+      {% assign node = "" %}
+    {% endif %}
+    {% assign parts = node | split: "/" %}
+    {% assign parent_parts = parts | pop %}
+    {% assign parent = parent_parts | join: "/" %}
+
+    {% if node != "" and parent == col_1_parent %}
+      {% assign has_col_1 = true %}
+    {% endif %}
+    {% if node != "" and parent == col_2_parent and col_2_parent != col_1_parent %}
+      {% assign has_col_2 = true %}
+    {% endif %}
+    {% if node != "" and parent == col_3_parent and col_3_parent != col_2_parent and col_3_parent != col_1_parent %}
+      {% assign has_col_3 = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<nav>
+  {% if has_col_1 %}
+    <ul>
+      {% include ordered-pages.html parent=col_1_parent pages=pages current=current %}
+    </ul>
+  {% endif %}
+
+  {% if has_col_2 %}
+    <ul>
+      {% include ordered-pages.html parent=col_2_parent pages=pages current=current %}
+    </ul>
+  {% endif %}
+
+  {% if has_col_3 %}
+    <ul>
+      {% include ordered-pages.html parent=col_3_parent pages=pages current=current %}
+    </ul>
+  {% endif %}
+</nav>
