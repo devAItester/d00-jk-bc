@@ -1,0 +1,41 @@
+{% assign parent = include.parent | default: "" %}
+{% assign ordered = site.data.menu[parent] %}
+{% assign sorted_pages = include.pages | sort: "path" %}
+
+{% if ordered %}
+  {% for name in ordered %}
+    {% if parent == "" %}
+      {% assign target = name %}
+    {% else %}
+      {% assign target = parent | append: "/" | append: name %}
+    {% endif %}
+    {% assign match = sorted_pages | where: "path", target | first %}
+    {% if match and match.path != "404.html" and match.title and match.title != "" %}
+      {% assign node = match.path | remove: ".md" | remove: ".html" | remove: "/index" %}
+      {% if node == "index" %}
+        {% assign node = "" %}
+      {% endif %}
+      <li><a href="{{ match.url | relative_url }}"{% if node == include.current %} class="self"{% elsif node == include.parent %} class="parent"{% endif %}>{{ match.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% for p in sorted_pages %}
+  {% if p.path != "404.html" and p.title and p.title != "" %}
+    {% assign node = p.path | remove: ".md" | remove: ".html" | remove: "/index" %}
+    {% if node == "index" %}
+      {% assign node = "" %}
+    {% endif %}
+    {% assign parts = node | split: "/" %}
+    {% assign parent_parts = parts | pop %}
+    {% assign page_parent = parent_parts | join: "/" %}
+    {% assign name = parts | last %}
+    {% assign filename = p.path | split: "/" | last %}
+
+    {% if node != "" and page_parent == parent %}
+      {% unless ordered and ordered contains filename %}
+        <li><a href="{{ p.url | relative_url }}"{% if node == include.current %} class="self"{% elsif node == include.parent %} class="parent"{% endif %}>{{ p.title }}</a></li>
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
