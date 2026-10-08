@@ -1,0 +1,17 @@
+<!DOCTYPE html><html id="lo"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="{{ '/assets/icon.svg' | relative_url }}" type="image/svg+xml">
+<title>{{ site.title }} &mdash; {{ page.title }}</title>
+<style>{% include style.css %}</style>
+</head>
+<body>
+<header><a href="{{ '/index.html' | relative_url }}"><img src="{{ '/assets/logo.svg' | relative_url }}" alt="{{ site.title }}" width="200" height="42"></a></header>
+{% include nav.html %}
+<main>
+{{ content }}
+</main>
+<footer>
+  <p><a href="{{ '/index.html' | relative_url }}">{{ site.title }}</a>&bull; flat-file text database</p>
+</footer>
+</body></html>
