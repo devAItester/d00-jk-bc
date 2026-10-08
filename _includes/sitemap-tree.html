@@ -1,0 +1,12 @@
+{% assign pages = include.pages | sort: "path" %}
+<ul class="sitemap">
+{% for p in pages %}
+  {% if p.title and p.title != "" and p.path != "index.md" and p.path != "index.html" %}
+    {% assign parts = p.path | split: "/" %}
+    {% assign depth = parts.size | minus: 1 %}
+    <li style="margin-left: {{ depth | times: 30 }}px">
+      <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
