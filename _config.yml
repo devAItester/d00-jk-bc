@@ -1,0 +1,6 @@
+title: flatfiletxtdb
+baseurl: /d00-jk-bc
+permalink: /:path/:basename:output_ext
+markdown: kramdown
+exclude:
+  - README.md
