@@ -1,5 +1,5 @@
-title: flatfiletxtdb
-baseurl: /d00-jk-bc
+title: d00-jk
+baseurl: /d00-jk
 permalink: /:path/:basename:output_ext
 markdown: kramdown
 exclude:
