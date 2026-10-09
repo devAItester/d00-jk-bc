@@ -28,7 +28,7 @@ The `html` halftone background has now been restored from the current original C
 
 Other confirmed mismatches still need decisions or fixes:
 
-- `body` uses `min-height:100vh` instead of `min-height:calc(100vh - 15px)`.
+- The original `min-height:calc(100vh - 15px)` has now been restored so the HTML background can remain visible at the bottom of short pages.
 - CSS Grid replaces the original float-based header and normal-flow navigation; this remains a workaround, not an approved design difference.
 - Footer geometry differs: the original uses `height:60px; overflow:hidden` and styles all direct children as 30px inline-blocks; ours uses `min-height:60px` and lacks the original child layout rules.
 - Our footer HTML is intentionally much simpler than the original footer and omits its icon links and right-aligned group; visual equivalence is not yet established.
