@@ -24,7 +24,18 @@ Relevant files: [default layout](https://github.com/devAItester/d00-jk-bc/blob/m
 
 ## Other CSS differences: not yet confirmed as intentional
 
-The current CSS also differs from David's in background treatment and footer layout. These are observed implementation differences, not confirmed design decisions. Do not treat them as intentional until we compare the published reference and explicitly decide to keep them.
+The `html` halftone background has now been restored from the current original CSS, with the exact GIF copied into `media/icon/halftone.gif` and a Jekyll `relative_url` so it works under the project's `/d00-jk-bc` base path. See commit [18d93d4](https://github.com/devAItester/d00-jk-bc/commit/18d93d4a4c2bc764b32555d2ab47fbf9ca18526e).
+
+Other confirmed mismatches still need decisions or fixes:
+
+- `body` uses `min-height:100vh` instead of `min-height:calc(100vh - 15px)`.
+- CSS Grid replaces the original float-based header and normal-flow navigation; this remains a workaround, not an approved design difference.
+- Footer geometry differs: the original uses `height:60px; overflow:hidden` and styles all direct children as 30px inline-blocks; ours uses `min-height:60px` and lacks the original child layout rules.
+- Our footer HTML is intentionally much simpler than the original footer and omits its icon links and right-aligned group; visual equivalence is not yet established.
+- Our header logo is an SVG asset with explicit 200 × 42 dimensions, while the current original page uses a PNG logo with width 200 and intrinsic height.
+- Our layout adds `<meta name="color-scheme" content="light dark">`, which is absent from the original page template.
+
+These are observations, not automatically intentional differences. Resolve them by checking the live reference and historical source before changing them.
 
 ## Implementation approach
 
