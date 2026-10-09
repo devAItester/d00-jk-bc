@@ -12,7 +12,7 @@ Reference tree:
         refs/
         diary/
 
-The current replica uses the original halftone asset directly while the binary media set is being imported. The visual reference page also links directly to original media assets.
+The halftone asset is copied locally from the original repository so the background does not depend on a third-party request. Other media can be imported as needed.
 
 Original media source:
 https://github.com/XXIIVV/oscean/tree/main/media
