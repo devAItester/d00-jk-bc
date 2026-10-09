@@ -113,7 +113,14 @@ Dark mode определяется prefers-color-scheme: dark. Фон стано
 
 Публичные страницы должны оставаться читаемыми без JavaScript, использовать обычные a href, сохранять текст в DOM и иметь подходящие text alternatives для изображений. Основная навигация не должна зависеть от внешнего запроса.
 
-## 19. Reference
+## 19. Source of truth and verification
+
+- [Live style specimen](https://wiki.xxiivv.com/site/styleguide.html) — образцы HTML-элементов и их визуального оформления.
+- [Current source CSS](https://github.com/XXIIVV/oscean/blob/main/links/main.css) — источник точных селекторов и свойств.
+- [Oscean engine notes](https://wiki.xxiivv.com/site/oscean.html) — ограничения реализации: обычный HTML, отсутствие JavaScript в сгенерированных страницах, пригодность для screen readers и terminal browsers.
+- [About](https://wiki.xxiivv.com/site/about.html) — философия архитектуры, не исчерпывающая спецификация CSS.
+
+При копировании сравнивать не только визуальные элементы: сверять весь набор селекторов и деклараций, глобальные правила `html`/`body`, медиа-запросы, ресурсы и пути URL. После этого отдельно сравнивать DOM/HTML, а затем визуальный результат.
 
 Живой эталонный пример: https://wiki.xxiivv.com/site/styleguide.html
 
